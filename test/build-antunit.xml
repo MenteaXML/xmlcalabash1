@@ -6,13 +6,14 @@
 
   <dirname property="test.basedir" file="${ant.file.CalabashTask-antunit}"/>
 
-  <property name="antunit.home" value="/usr/local/src/apache-ant-antunit-1.2"/>
+  <property name="antunit.version" value="1.3"/>
+  <property name="antunit.home" value="/usr/local/src/apache-ant-antunit-${antunit.version}"/>
 
   <taskdef 
       uri="antlib:org.apache.ant.antunit"
       resource="org/apache/ant/antunit/antlib.xml">
     <classpath>
-      <pathelement location="${antunit.home}/ant-antunit-1.2.jar"/>
+      <pathelement location="${antunit.home}/ant-antunit-${antunit.version}.jar"/>
     </classpath>
   </taskdef>
 
@@ -423,6 +424,12 @@
     <calabash in="in/in.xml" out="out/out.xml" pipeline="pipeline.xpl" force="true">
       <sysproperty key="com.xmlcalabash.phonehome" value="false" />
       <option name="p:there" value="in your night" />
+    </calabash>
+  </target>
+
+  <target name="testFail" description="Error in pipeline should not leave an output file.">
+    <calabash in="in/in.xml" out="out/syntax-error.xml" pipeline="syntax-error.xpl" force="true">
+      <sysproperty key="com.xmlcalabash.phonehome" value="false" />
     </calabash>
   </target>
 
