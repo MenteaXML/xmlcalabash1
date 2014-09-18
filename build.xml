@@ -23,6 +23,9 @@
   <property name="submit.username" value="calabash"/>
   <property name="submit.password" value=""/>
 
+  <property name="java.lib" value="/usr/share/java"/>
+  <property name="batik.jar" value="${java.lib}/batik-1.7.jar"/>
+
   <!-- Whether to include debugging information when compiling. -->
   <property name="javac.debug" value="false"/>
 
@@ -47,6 +50,7 @@
       <include name="*.jar"/>
     </fileset>
     <pathelement location="${ant.library.dir}/ant.jar"/>
+    <pathelement location="${batik.jar}"/>
   </path>
 
   <path id="full.classpath">
