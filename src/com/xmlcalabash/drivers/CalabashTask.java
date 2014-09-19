@@ -959,12 +959,12 @@ public class CalabashTask extends MatchingTask {
         }
 
         if ((inResource != null || outResource != null) && useImplicitFileset) {
-            log("'in' and/or 'out' cannot be used with implicit fileset: ignoring implicit fileset.", Project.MSG_VERBOSE);
+            log("'in' and/or 'out' cannot be used with an implicit fileset: if there is an implicit fileset, it will be ignored.", Project.MSG_VERBOSE);
             useImplicitFileset = false;
         }
 
         if (!steps.isEmpty() && useImplicitFileset) {
-            log("steps cannot be used with implicit fileset: ignoring implicit fileset.", Project.MSG_VERBOSE);
+            log("steps cannot be used with an implicit fileset: if there is an implicit fileset, it will be ignored.", Project.MSG_VERBOSE);
             useImplicitFileset = false;
         }
 
