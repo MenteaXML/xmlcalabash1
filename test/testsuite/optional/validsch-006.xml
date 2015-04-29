@@ -1,0 +1,43 @@
+<?xml-stylesheet type="text/xsl" href="/style/testcase.xsl"?>
+<t:test xmlns:t="http://xproc.org/ns/testsuite"
+        xmlns:p="http://www.w3.org/ns/xproc"
+        xmlns:c="http://www.w3.org/ns/xproc-step"
+        xmlns:err="http://www.w3.org/ns/xproc-error"
+	ignore-whitespace-differences="true">
+
+<t:title>Test validsch-006</t:title>
+
+<t:input port="source"
+	 href="../doc/input.xml"/>
+
+<t:input port="schema"
+	 href="../doc/import-xslt.sch"/>
+
+<t:pipeline>
+<p:declare-step version='1.0' name="main" exclude-inline-prefixes="t c err">
+<p:input port="parameters" kind="parameter"/>
+<p:input port="source"/>
+<p:input port="schema"/>
+<p:output port="result"/>
+
+<p:validate-with-schematron name="schematron">
+  <p:input port="source">
+    <p:pipe step="main" port="source"/>
+  </p:input>
+  <p:input port="schema">
+    <p:pipe step="main" port="schema"/>
+  </p:input>
+</p:validate-with-schematron>
+
+</p:declare-step>
+</t:pipeline>
+
+<t:output port='result'>
+<doc>
+  <title>input.xml</title>
+  <p>This is input.xml.</p>
+</doc>
+</t:output>
+
+</t:test>
+

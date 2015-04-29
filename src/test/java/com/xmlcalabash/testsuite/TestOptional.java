@@ -445,6 +445,11 @@ public class TestOptional {
         suiteRunner.runTest(TESTROOT + "validsch-005.xml");
     }
 
+    @Test
+    public void testValidsch006() {
+        suiteRunner.runTest(TESTROOT + "validsch-006.xml");
+    }
+
     @Ignore
     public void testValidxsd001() {
         suiteRunner.runTest(TESTROOT + "validxsd-001.xml");
