@@ -1884,6 +1884,13 @@ which require a preprocess.
 		</xsl:if>
 	</xsl:template>
 
+  <!-- FIX : Use relative URI for xsl:include used in schematron -->
+  <xsl:template match="xsl:include" priority="1">
+    <xsl:copy>
+      <xsl:attribute name="href" select="resolve-uri(@href, base-uri())"/>
+    </xsl:copy>
+  </xsl:template>
+
 <!-- ============================================================== -->
 <!-- DEFAULT NAMED TEMPLATES -->
 <!-- These are the actions that are performed unless overridden -->
